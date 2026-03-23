@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title id="pageTitle">Real People. Real Income. Real Results.</title>
+<meta name="description" content="Students, housewives and professionals earning online. See real proof."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ─── TOKENS ─────────────────────────────────────────────── */
+:root{
+  --cream:#FAF7F2; --cream-d:#F2EDE4; --cream-dd:#EBE4D8;
+  --brown:#2C1810; --brown-m:#5C3D2E; --brown-l:#8B6355;
+  --orange:#E8621A; --orange-dk:#C4501A; --orange-sf:#FFF0E8;
+  --white:#FFFFFF; --green:#25D366;
+  --sh-sm:0 2px 12px rgba(44,24,16,.08);
+  --sh-md:0 8px 32px rgba(44,24,16,.12);
+  --sh-lg:0 20px 60px rgba(44,24,16,.18);
+  --r:16px; --r-lg:24px;
+  --ff-h:'Playfair Display',serif;
+  --ff-b:'DM Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--brown);font-family:var(--ff-b);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;outline:none;font-family:var(--ff-b)}
+section{padding:80px 0}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ─── KEYFRAMES ─────────────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes glow{0%,100%{box-shadow:0 0 8px rgba(232,98,26,.4)}50%{box-shadow:0 0 22px rgba(232,98,26,.85)}}
+@keyframes ping{0%{transform:scale(1);opacity:1}100%{transform:scale(2.2);opacity:0}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+@keyframes shimmer{0%{background-position:-400% 0}100%{background-position:400% 0}}
+
+/* ─── REVEAL ─────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .72s cubic-bezier(.22,1,.36,1),transform .72s cubic-bezier(.22,1,.36,1)}
+.reveal.vis{opacity:1;transform:none}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}.rd4{transition-delay:.4s}
+
+/* ─── SKELETON LOADER ────────────────────────────────────── */
+.skel{background:linear-gradient(90deg,var(--cream-d) 25%,var(--cream-dd) 50%,var(--cream-d) 75%);background-size:400% 100%;animation:shimmer 1.4s infinite;border-radius:8px}
+
+/* ─── TYPE HELPERS ──────────────────────────────────────── */
+.lbl{display:inline-block;background:var(--orange-sf);color:var(--orange);font-size:.73rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:16px}
+.sec-title{font-family:var(--ff-h);font-size:clamp(1.9rem,4.5vw,3rem);font-weight:700;line-height:1.15;color:var(--brown);margin-bottom:14px}
+.sec-sub{font-size:1rem;color:var(--brown-l);max-width:500px}
+
+/* ─── NAVBAR ─────────────────────────────────────────────── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;background:rgba(250,247,242,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(44,24,16,.07);padding:13px 0;transition:box-shadow .3s}
+.nav.scrolled{box-shadow:var(--sh-sm)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:0 24px}
+.logo{font-family:var(--ff-h);font-size:1.35rem;font-weight:700;color:var(--brown)}
+.logo span{color:var(--orange)}
+.nav-btn{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;padding:10px 22px;border-radius:100px;font-size:.875rem;font-weight:600;transition:background .2s,transform .2s,box-shadow .2s;cursor:pointer}
+.nav-btn:hover{background:var(--orange-dk);transform:translateY(-1px);box-shadow:0 6px 20px rgba(232,98,26,.35)}
+
+/* ─── HERO ───────────────────────────────────────────────── */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:86px;
+  background:radial-gradient(ellipse 80% 55% at 68% 42%,rgba(232,98,26,.09) 0%,transparent 70%),var(--cream);
+  position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(232,98,26,.055),transparent 70%);top:-250px;right:-220px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:var(--white);border:1px solid rgba(232,98,26,.22);color:var(--brown-m);font-size:.78rem;font-weight:500;padding:8px 16px;border-radius:100px;margin-bottom:24px;box-shadow:var(--sh-sm);animation:fadeUp .6s ease both}
+.hero-dot{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:pulse 2s infinite}
+.hero-title{font-family:var(--ff-h);font-size:clamp(2.4rem,5.5vw,4rem);font-weight:900;line-height:1.1;margin-bottom:18px;animation:fadeUp .7s .1s ease both}
+.hero-title span{color:var(--orange)}
+.hero-sub{font-size:1.1rem;color:var(--brown-l);margin-bottom:34px;line-height:1.75;animation:fadeUp .7s .2s ease both}
+.hero-btns{display:flex;align-items:center;gap:14px;flex-wrap:wrap;animation:fadeUp .7s .3s ease both}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#fff;padding:15px 30px;border-radius:100px;font-size:.97rem;font-weight:600;transition:all .25s;box-shadow:0 8px 24px rgba(232,98,26,.28);position:relative;overflow:hidden}
+.btn-primary::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.25),transparent);opacity:0;transition:opacity .3s}
+.btn-primary:hover{background:var(--orange-dk);transform:translateY(-2px);box-shadow:0 12px 32px rgba(232,98,26,.4)}
+.btn-primary:hover::after{opacity:1}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;color:var(--brown);padding:13px 22px;border-radius:100px;border:1.5px solid rgba(44,24,16,.14);font-size:.92rem;font-weight:500;transition:all .2s}
+.btn-ghost:hover{border-color:var(--orange);color:var(--orange);background:var(--orange-sf)}
+.hero-stats{display:flex;gap:36px;margin-top:44px;animation:fadeUp .7s .4s ease both}
+.stat-num{font-family:var(--ff-h);font-size:1.95rem;font-weight:700;color:var(--brown);display:block}
+.stat-num span{color:var(--orange)}
+.stat-lbl{font-size:.75rem;color:var(--brown-l);text-transform:uppercase;letter-spacing:.06em}
+
+/* Hero visual */
+.hero-visual{position:relative;animation:fadeUp .8s .2s ease both}
+.card-stack{position:relative;height:480px}
+.hcard{position:absolute;background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh-md);padding:20px;transition:transform .3s}
+.hcard:hover{transform:translateY(-5px) !important}
+.hcard-main{width:290px;top:50px;left:50%;transform:translateX(-50%);z-index:3;animation:float 4s ease-in-out infinite}
+.hcard-main img{width:100%;height:190px;object-fit:cover;border-radius:12px;margin-bottom:14px}
+.hcard-name{font-weight:600;font-size:.93rem}
+.hcard-role{font-size:.78rem;color:var(--brown-l);margin-bottom:10px}
+.hcard-earn{background:var(--orange-sf);color:var(--orange);font-weight:700;font-size:1.05rem;padding:8px 14px;border-radius:10px;display:inline-block}
+.hcard-sm{width:208px;background:var(--white);border-radius:var(--r);box-shadow:var(--sh-md);padding:16px}
+.hcard-sm.right{top:20px;right:0;z-index:2;transform:rotate(3.5deg);animation:float 5s 1s ease-in-out infinite}
+.hcard-sm.left{bottom:40px;left:0;z-index:2;transform:rotate(-3deg);animation:float 4.5s .5s ease-in-out infinite}
+.mini-row{display:flex;align-items:center;gap:10px}
+.mini-av{width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.mini-name{font-weight:600;font-size:.83rem}
+.mini-earn{font-size:.78rem;color:var(--orange);font-weight:600}
+
+/* ─── TRUST MARQUEE ─────────────────────────────────────── */
+.trust-bar{background:var(--brown);padding:15px 0;overflow:hidden}
+.marquee{display:flex;gap:44px;animation:marquee 22s linear infinite;white-space:nowrap}
+.mitem{display:inline-flex;align-items:center;gap:10px;color:rgba(255,255,255,.7);font-size:.82rem;font-weight:500;flex-shrink:0}
+.mitem strong{color:#fff}
+.mdot{width:4px;height:4px;background:var(--orange);border-radius:50%;flex-shrink:0}
+
+/* ─── VIDEO SECTION ─────────────────────────────────────── */
+.video-sec{background:var(--cream-d)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.vcard{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-sm);transition:transform .3s,box-shadow .3s;cursor:pointer}
+.vcard:hover{transform:translateY(-6px);box-shadow:var(--sh-md)}
+.vthumb{position:relative;width:100%;padding-top:56.25%;background:#1a0a00;overflow:hidden}
+.vthumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72;transition:opacity .3s,transform .5s}
+.vcard:hover .vthumb img{opacity:.9;transform:scale(1.06)}
+.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;animation:glow 2.5s infinite;transition:transform .2s}
+.vcard:hover .play-btn{transform:translate(-50%,-50%) scale(1.12)}
+.vdur{position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;font-size:.7rem;padding:3px 8px;border-radius:5px}
+.vinfo{padding:16px}
+.vinfo-name{font-weight:600;font-size:.88rem}
+.vinfo-loc{font-size:.75rem;color:var(--brown-l);margin-top:2px}
+.vinfo-earn{margin-top:10px;background:var(--orange-sf);color:var(--orange);font-weight:700;font-size:.87rem;padding:6px 12px;border-radius:8px;display:inline-block}
+.empty-state{text-align:center;padding:48px 20px;color:var(--brown-l);font-size:.9rem;grid-column:1/-1}
+
+/* ─── GALLERY ───────────────────────────────────────────── */
+.gal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(min-width:640px){.gal-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:960px){.gal-grid{grid-template-columns:repeat(4,1fr)}}
+.gal-item{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:3/4;background:var(--cream-d);cursor:pointer}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.gal-item:hover img{transform:scale(1.08)}
+.gal-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(44,24,16,.68) 0%,transparent 52%);display:flex;align-items:flex-end;padding:14px;opacity:0;transition:opacity .3s}
+.gal-item:hover .gal-ov{opacity:1}
+.gal-lbl{background:var(--orange);color:#fff;font-weight:700;font-size:.79rem;padding:5px 12px;border-radius:8px}
+.load-more-wrap{text-align:center;margin-top:32px}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--orange);color:var(--orange);padding:12px 28px;border-radius:100px;font-weight:600;font-size:.92rem;background:transparent;transition:all .2s}
+.btn-outline:hover{background:var(--orange);color:#fff}
+
+/* ─── MODAL ──────────────────────────────────────────────── */
+.modal{position:fixed;inset:0;z-index:9500;background:rgba(20,8,4,.92);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(10px)}
+.modal.open{display:flex}
+.modal-img{max-width:90vw;max-height:88vh;border-radius:var(--r);object-fit:contain}
+.modal-x{position:fixed;top:20px;right:22px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:1.3rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+.modal-x:hover{background:var(--orange)}
+.modal-cap{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-weight:700;padding:8px 20px;border-radius:100px;font-size:.88rem;white-space:nowrap}
+
+/* ─── CATEGORY TABS ─────────────────────────────────────── */
+.cat-sec{background:var(--cream-d)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.tab{padding:10px 22px;border-radius:100px;font-size:.875rem;font-weight:600;border:1.5px solid rgba(44,24,16,.14);background:var(--white);color:var(--brown-m);transition:all .2s}
+.tab.act{background:var(--orange);border-color:var(--orange);color:#fff;box-shadow:0 4px 16px rgba(232,98,26,.25)}
+.tab:hover:not(.act){border-color:var(--orange);color:var(--orange)}
+.tpanel{display:none}
+.tpanel.act{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.tcard{background:var(--white);border-radius:var(--r);padding:20px;box-shadow:var(--sh-sm);display:flex;flex-direction:column;gap:12px;transition:transform .3s,box-shadow .3s;border:1px solid transparent}
+.tcard:hover{transform:translateY(-4px);box-shadow:var(--sh-md);border-color:rgba(232,98,26,.14)}
+.tcard-top{display:flex;align-items:center;gap:12px}
+.tcard-av{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2.5px solid var(--orange-sf);flex-shrink:0}
+.tcard-name{font-weight:600;font-size:.93rem}
+.tcard-tag{font-size:.7rem;color:var(--orange);background:var(--orange-sf);padding:3px 10px;border-radius:100px;font-weight:600;margin-top:4px;display:inline-block}
+.tcard-quote{font-size:.9rem;color:var(--brown-m);line-height:1.62;font-style:italic}
+.tcard-earn{font-weight:700;font-size:1rem;color:var(--orange);display:flex;align-items:center;gap:6px}
+.stars{color:#F5A623;font-size:.82rem;letter-spacing:2px}
+
+/* ─── CHAT ───────────────────────────────────────────────── */
+.chat-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.chat-box{background:var(--white);border-radius:var(--r-lg);box-shadow:var(--sh-md);overflow:hidden}
+.chat-hd{background:var(--brown);padding:16px 20px;display:flex;align-items:center;gap:12px}
+.chat-av{width:38px;height:38px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#fff}
+.chat-hd-ttl{font-weight:600;color:#fff;font-size:.88rem}
+.chat-hd-sub{font-size:.73rem;color:rgba(255,255,255,.55)}
+.chat-body{
+  padding:18px;
+  background:#ECE5DD url("data:image/svg+xml,%3Csvg width='52' height='52' viewBox='0 0 52 52' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c0b9ae' fill-opacity='0.14'%3E%3Cpath d='M30 28v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-26V0h-2v2h-4v2h4v4h2V4h4V2h-4zM4 28v-4H2v4H0v2h2v4h2v-4h4v-2H4zM4 2V0H2v2H0v2h2v4h2V4h4V2H4z'/%3E%3C/g%3E%3C/svg%3E");
+  display:flex;flex-direction:column;gap:13px;max-height:480px;overflow-y:auto;
+}
+.cmsg{max-width:82%;display:flex;flex-direction:column;gap:3px}
+.cmsg.in{align-self:flex-start}
+.cmsg.out{align-self:flex-end}
+.cbubble{padding:9px 13px;border-radius:12px;font-size:.86rem;line-height:1.52;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.in .cbubble{background:#fff;color:var(--brown);border-radius:0 12px 12px 12px}
+.out .cbubble{background:#DCF8C6;color:var(--brown);border-radius:12px 12px 0 12px}
+.csender{font-size:.7rem;font-weight:600;color:var(--orange);padding-left:4px;margin-bottom:1px}
+.cmeta{font-size:.66rem;color:rgba(44,24,16,.42);padding:0 4px}
+.out .cmeta{text-align:right}
+.cearn{display:inline-flex;align-items:center;gap:6px;background:var(--orange);color:#fff;font-size:.76rem;font-weight:700;padding:5px 12px;border-radius:100px;margin-top:3px}
+
+/* ─── CAROUSEL ──────────────────────────────────────────── */
+.carousel-sec{background:var(--brown)}
+.carousel-sec .lbl{background:rgba(255,255,255,.1);color:rgba(255,255,255,.72)}
+.carousel-sec .sec-title{color:#fff}
+.ctrack{display:flex;gap:18px;overflow-x:auto;padding:6px 2px 22px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:rgba(232,98,26,.4) transparent}
+.ctrack::-webkit-scrollbar{height:4px}
+.ctrack::-webkit-scrollbar-thumb{background:var(--orange);border-radius:4px}
+.citem{flex:0 0 255px;scroll-snap-align:start;background:rgba(255,255,255,.07);border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.1);transition:transform .3s;cursor:pointer}
+.citem:hover{transform:scale(1.035)}
+.cthumb{width:100%;padding-top:56.25%;position:relative;background:rgba(0,0,0,.3)}
+.cthumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72}
+.cplay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;background:rgba(232,98,26,.9);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.cinfo{padding:13px}
+.cinfo .cn{color:#fff;font-weight:600;font-size:.86rem}
+.cinfo .ce{color:var(--orange);font-size:.8rem;font-weight:700;margin-top:3px}
+
+/* ─── MAP SECTION ───────────────────────────────────────── */
+.map-sec{background:linear-gradient(135deg,#1a0c06 0%,#2C1810 55%,#1a0c06 100%);position:relative;overflow:hidden;text-align:center}
+.map-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(232,98,26,.13) 0%,transparent 72%)}
+.map-sec .lbl{background:rgba(232,98,26,.22);color:var(--orange)}
+.map-sec .sec-title{color:#fff}
+.map-sec .sec-sub{color:rgba(255,255,255,.58);margin:0 auto}
+.map-svg-wrap{max-width:820px;margin:40px auto 0}
+.wstats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:44px}
+.wstat-num{font-family:var(--ff-h);font-size:2.4rem;font-weight:700;color:var(--orange);display:block}
+.wstat-lbl{color:rgba(255,255,255,.58);font-size:.82rem;margin-top:4px}
+
+/* ─── TRUST STATEMENT ───────────────────────────────────── */
+.trust-stmt{background:var(--orange-sf);text-align:center;padding:64px 20px}
+.trust-txt{font-family:var(--ff-h);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--brown);line-height:1.3;max-width:640px;margin:0 auto}
+.trust-txt span{color:var(--orange)}
+.trust-icons{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:34px}
+.ti-wrap{display:flex;flex-direction:column;align-items:center;gap:8px}
+.ti-circle{width:56px;height:56px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:var(--sh-sm)}
+.ti-lbl{font-size:.75rem;color:var(--brown-m);font-weight:600;text-align:center}
+
+/* ─── FINAL CTA ─────────────────────────────────────────── */
+.final-cta{background:linear-gradient(135deg,var(--brown) 0%,#3D1F10 100%);text-align:center;padding:100px 20px;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(232,98,26,.15),transparent);top:50%;left:50%;transform:translate(-50%,-50%)}
+.cta-eyebrow{color:rgba(255,255,255,.55);font-size:.95rem;margin-bottom:12px}
+.cta-title{font-family:var(--ff-h);font-size:clamp(2rem,5vw,3.4rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:30px}
+.cta-title span{color:var(--orange)}
+.cta-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn-wa{display:inline-flex;align-items:center;gap:11px;background:var(--green);color:#fff;padding:16px 34px;border-radius:100px;font-size:1rem;font-weight:700;box-shadow:0 8px 24px rgba(37,211,102,.3);transition:all .25s}
+.btn-wa:hover{background:#1ebe5d;transform:translateY(-2px);box-shadow:0 12px 32px rgba(37,211,102,.42)}
+
+/* ─── FLOATING WA + STICKY ───────────────────────────────── */
+.wa-float{position:fixed;bottom:28px;right:22px;z-index:800;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.wa-fab{display:flex;align-items:center;gap:10px;background:var(--green);color:#fff;font-weight:700;font-size:.86rem;padding:12px 18px 12px 15px;border-radius:100px;box-shadow:0 8px 24px rgba(37,211,102,.4);cursor:pointer;transition:transform .2s,box-shadow .2s;animation:float 4s ease-in-out infinite;text-decoration:none}
+.wa-fab:hover{transform:scale(1.06);box-shadow:0 12px 32px rgba(37,211,102,.5)}
+.wa-ping{position:absolute;top:-2px;right:-2px;width:13px;height:13px;border-radius:50%;background:var(--orange);animation:ping 1.6s infinite}
+.wa-fab-inner{position:relative}
+.sticky-mob{display:none;position:fixed;bottom:0;left:0;right:0;z-index:780;padding:11px 16px;background:rgba(250,247,242,.95);backdrop-filter:blur(12px);border-top:1px solid rgba(44,24,16,.09)}
+.sticky-mob a{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--green);color:#fff;padding:14px;border-radius:100px;font-weight:700;font-size:.93rem;box-shadow:0 4px 16px rgba(37,211,102,.35)}
+@media(max-width:768px){.sticky-mob{display:block}.wa-float{bottom:88px}}
+
+/* ─── DISCLAIMER ─────────────────────────────────────────── */
+.disclaimer{background:var(--cream-d);border-top:1px solid rgba(44,24,16,.08);padding:22px 20px;text-align:center;font-size:.76rem;color:var(--brown-l);line-height:1.7}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-visual{display:none}
+  .chat-wrap{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  section{padding:60px 0}
+  .hero-stats{gap:22px}
+  .wstats{gap:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <div class="logo" id="siteLogoEl">Earn<span>Online</span>.in</div>
+    <a class="nav-btn wa-cta" href="#">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.106.549 4.09 1.512 5.816L.083 23.608a.5.5 0 0 0 .609.609l5.792-1.429A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.881 0-3.647-.506-5.168-1.39l-.359-.213-3.72.917.934-3.611-.234-.375A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge"><span class="hero-dot"></span>🇮🇳 &nbsp;Trusted across India</div>
+        <h1 class="hero-title" id="heroHeadline">Real People.<br/>Real Income.<br/><span>Real Results.</span></h1>
+        <p class="hero-sub" id="heroSub">Students, housewives, and working professionals are earning online — from the comfort of their homes.</p>
+        <div class="hero-btns">
+          <a class="btn-primary wa-cta" href="#" id="heroCta">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 3l14 9-14 9V3z" fill="currentColor"/></svg>
+            <span id="heroCtaText">See Real Proof</span>
+          </a>
+          <a class="btn-ghost wa-cta" href="#">Ask on WhatsApp</a>
+        </div>
+        <div class="hero-stats">
+          <div><span class="stat-num">12<span>K+</span></span><span class="stat-lbl">Active Earners</span></div>
+          <div><span class="stat-num">₹<span>2.4Cr</span></span><span class="stat-lbl">Total Earned</span></div>
+          <div><span class="stat-num">28<span>+</span></span><span class="stat-lbl">States</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="card-stack">
+          <div class="hcard hcard-main">
+            <img src="https://picsum.photos/seed/hw1/290/190" alt="Earner" loading="lazy"/>
+            <div class="hcard-name">Priya Sharma</div>
+            <div class="hcard-role">Housewife · Jaipur</div>
+            <div class="hcard-earn">₹18,500 this month</div>
+          </div>
+          <div class="hcard hcard-sm right">
+            <div class="mini-row">
+              <img src="https://picsum.photos/seed/st1/80/80" class="mini-av" alt="" loading="lazy"/>
+              <div><div class="mini-name">Rahul K.</div><div class="mini-earn">₹9,200/mo</div></div>
+            </div>
+          </div>
+          <div class="hcard hcard-sm left">
+            <div class="mini-row">
+              <img src="https://picsum.photos/seed/pr1/80/80" class="mini-av" alt="" loading="lazy"/>
+              <div><div class="mini-name">Anita D.</div><div class="mini-earn">₹12,800/mo</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST MARQUEE -->
+<div class="trust-bar"><div class="marquee" id="marqueeEl"></div></div>
+
+<!-- VIDEO SECTION -->
+<section class="video-sec" id="videos">
+  <div class="container">
+    <div class="reveal">
+      <span class="lbl">Video Proof</span>
+      <h2 class="sec-title">Watch how people are changing their lives</h2>
+      <p class="sec-sub" style="margin-bottom:40px">Real stories. Real faces. No scripts.</p>
+    </div>
+    <div class="vgrid" id="videoGrid"></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="reveal">
+      <span class="lbl">Payment Proofs</span>
+      <h2 class="sec-title">Real earnings.<br/>Real screenshots.</h2>
+      <p class="sec-sub" style="margin-bottom:40px">Every image represents a real payment. No editing. No fakes.</p>
+    </div>
+    <div class="gal-grid" id="galGrid"></div>
+    <div class="load-more-wrap reveal"><button class="btn-outline" id="loadMoreBtn">⬇ Load More Proofs</button></div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <button class="modal-x" id="modalX">✕</button>
+  <img class="modal-img" id="modalImg" src="" alt=""/>
+  <div class="modal-cap" id="modalCap"></div>
+</div>
+
+<!-- CATEGORY TABS -->
+<section class="cat-sec">
+  <div class="container">
+    <div class="reveal">
+      <span class="lbl">Who Is Earning</span>
+      <h2 class="sec-title">People from every walk of life</h2>
+    </div>
+    <div class="tabs reveal rd1">
+      <button class="tab act" data-tab="housewives">🏠 Housewives</button>
+      <button class="tab" data-tab="students">🎓 Students</button>
+      <button class="tab" data-tab="professionals">💼 Professionals</button>
+    </div>
+    <div class="tpanel act" id="tab-housewives"></div>
+    <div class="tpanel" id="tab-students"></div>
+    <div class="tpanel" id="tab-professionals"></div>
+  </div>
+</section>
+
+<!-- CHAT -->
+<section>
+  <div class="container">
+    <div class="chat-wrap">
+      <div class="reveal">
+        <span class="lbl">Real Chat Proofs</span>
+        <h2 class="sec-title">What people are saying in real chats</h2>
+        <p class="sec-sub" style="margin-bottom:28px">Unedited messages shared directly by our community members.</p>
+        <a class="btn-primary wa-cta" href="#" style="display:inline-flex">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.106.549 4.09 1.512 5.816L.083 23.608a.5.5 0 0 0 .609.609l5.792-1.429A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.881 0-3.647-.506-5.168-1.39l-.359-.213-3.72.917.934-3.611-.234-.375A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Join Our Community
+        </a>
+      </div>
+      <div class="chat-box reveal rd2">
+        <div class="chat-hd">
+          <div class="chat-av">💬</div>
+          <div><div class="chat-hd-ttl">Community Chat</div><div class="chat-hd-sub">● Live · 2,400+ members</div></div>
+        </div>
+        <div class="chat-body" id="chatBody"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO CAROUSEL -->
+<section class="carousel-sec">
+  <div class="container">
+    <div class="reveal">
+      <span class="lbl">More Results</span>
+      <h2 class="sec-title">More real results 🎥</h2>
+    </div>
+    <div class="ctrack" id="carouselTrack"></div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-sec">
+  <div class="container">
+    <div class="reveal">
+      <span class="lbl">Community Reach</span>
+      <h2 class="sec-title">Earning from every corner of India 🇮🇳</h2>
+      <p class="sec-sub">People from different backgrounds, different states, different situations — all earning online.</p>
+    </div>
+    <div class="map-svg-wrap reveal rd2">
+      <svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+        <path d="M390 60 L420 55 L452 60 L472 82 L482 112 L492 142 L502 172 L514 204 L522 234 L512 264 L500 292 L490 322 L478 352 L458 382 L438 402 L418 422 L398 440 L376 428 L356 408 L334 382 L318 358 L308 328 L296 298 L288 268 L283 238 L278 208 L284 178 L296 148 L312 118 L328 93 L348 74 L370 62 Z"
+          fill="none" stroke="rgba(232,98,26,0.38)" stroke-width="1.5"/>
+        <g>
+          <circle cx="420" cy="178" r="5" fill="var(--orange)" opacity=".9"><animate attributeName="r" values="5;8;5" dur="2s" repeatCount="indefinite"/></circle>
+          <circle cx="462" cy="258" r="5" fill="var(--orange)" opacity=".8"><animate attributeName="r" values="5;9;5" dur="2.5s" repeatCount="indefinite"/></circle>
+          <circle cx="348" cy="228" r="4" fill="var(--orange)" opacity=".72"><animate attributeName="r" values="4;7;4" dur="3s" repeatCount="indefinite"/></circle>
+          <circle cx="400" cy="318" r="5" fill="var(--orange)" opacity=".9"><animate attributeName="r" values="5;8;5" dur="1.8s" repeatCount="indefinite"/></circle>
+          <circle cx="312" cy="148" r="4" fill="var(--orange)" opacity=".65"><animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/></circle>
+          <circle cx="484" cy="198" r="4" fill="var(--orange)" opacity=".78"><animate attributeName="r" values="4;7;4" dur="3.2s" repeatCount="indefinite"/></circle>
+          <circle cx="336" cy="290" r="4" fill="var(--orange)" opacity=".82"><animate attributeName="r" values="4;7;4" dur="2.1s" repeatCount="indefinite"/></circle>
+        </g>
+        <g fill="none" stroke="rgba(232,98,26,0.28)" stroke-width="1" stroke-dasharray="4,4">
+          <line x1="420" y1="178" x2="462" y2="258"/><line x1="420" y1="178" x2="348" y2="228"/>
+          <line x1="462" y1="258" x2="400" y2="318"/><line x1="348" y1="228" x2="400" y2="318"/>
+          <line x1="312" y1="148" x2="420" y2="178"/><line x1="484" y1="198" x2="462" y2="258"/>
+          <line x1="336" y1="290" x2="400" y2="318"/>
+        </g>
+        <g fill="rgba(255,255,255,0.45)" font-size="10" font-family="DM Sans,sans-serif">
+          <text x="428" y="174">Delhi</text><text x="470" y="254">Kolkata</text>
+          <text x="322" y="222">Mumbai</text><text x="408" y="314">Chennai</text>
+          <text x="318" y="144">Jaipur</text>
+        </g>
+      </svg>
+    </div>
+    <div class="wstats reveal rd3">
+      <div class="wstat-wrap"><span class="wstat-num">28</span><div class="wstat-lbl">States Active</div></div>
+      <div class="wstat-wrap"><span class="wstat-num">12K+</span><div class="wstat-lbl">Community Members</div></div>
+      <div class="wstat-wrap"><span class="wstat-num">₹2.4Cr</span><div class="wstat-lbl">Total Paid Out</div></div>
+      <div class="wstat-wrap"><span class="wstat-num">4.9★</span><div class="wstat-lbl">Avg. Rating</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STATEMENT -->
+<section class="trust-stmt">
+  <div class="container reveal">
+    <p class="trust-txt">"No fake promises.<br/><span>Just real people</span><br/>taking real action."</p>
+    <div class="trust-icons">
+      <div class="ti-wrap"><div class="ti-circle">✅</div><div class="ti-lbl">Verified<br/>Payments</div></div>
+      <div class="ti-wrap"><div class="ti-circle">🔒</div><div class="ti-lbl">100%<br/>Transparent</div></div>
+      <div class="ti-wrap"><div class="ti-circle">🚀</div><div class="ti-lbl">Start in<br/>Minutes</div></div>
+      <div class="ti-wrap"><div class="ti-circle">🇮🇳</div><div class="ti-lbl">Made for<br/>India</div></div>
+      <div class="ti-wrap"><div class="ti-circle">💬</div><div class="ti-lbl">24/7<br/>Support</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container reveal">
+    <p class="cta-eyebrow">12,000+ people have already started</p>
+    <h2 class="cta-title">If they can do it,<br/><span>why not you?</span></h2>
+    <div class="cta-actions">
+      <a class="btn-wa wa-cta" href="#">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.106.549 4.09 1.512 5.816L.083 23.608a.5.5 0 0 0 .609.609l5.792-1.429A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.881 0-3.647-.506-5.168-1.39l-.359-.213-3.72.917.934-3.611-.234-.375A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Start Your Journey
+      </a>
+      <a class="btn-ghost" href="#videos" style="color:rgba(255,255,255,.65);border-color:rgba(255,255,255,.18)">Watch More Proof</a>
+    </div>
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+<footer class="disclaimer">
+  <div class="container">
+    <strong>⚠️ Disclaimer:</strong> Results shown are based on real users who have put in consistent effort. Individual results may vary. Earning online requires dedication, time, and consistent action. This platform does not guarantee specific income levels.<br/>
+    <span id="footerSiteName">© 2024 EarnOnline.in</span> · All rights reserved
+  </div>
+</footer>
+
+<!-- FLOATING WA -->
+<div class="wa-float">
+  <a class="wa-fab wa-cta" href="#">
+    <div class="wa-fab-inner">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.106.549 4.09 1.512 5.816L.083 23.608a.5.5 0 0 0 .609.609l5.792-1.429A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.881 0-3.647-.506-5.168-1.39l-.359-.213-3.72.917.934-3.611-.234-.375A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      <div class="wa-ping"></div>
+    </div>
+    Chat on WhatsApp
+  </a>
+</div>
+<div class="sticky-mob"><a class="wa-cta" href="#">
+  <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.106.549 4.09 1.512 5.816L.083 23.608a.5.5 0 0 0 .609.609l5.792-1.429A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.881 0-3.647-.506-5.168-1.39l-.359-.213-3.72.917.934-3.611-.234-.375A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  Start Your Journey on WhatsApp
+</a></div>
+
+<script>
+/* ───────────────────────────────────────────────────────────
+   DATA LAYER  –  reads from localStorage (written by admin)
+   ─────────────────────────────────────────────────────────── */
+const DATA_KEY = 'eon_cms_v2';
+
+const DEFAULTS = {
+  settings: {
+    siteName:'EarnOnline.in',
+    waPhone:'919999999999',
+    waMessage:'Yes, I am interested. Please share more details.'
+  },
+  hero:{
+    headline:'Real People.<br/>Real Income.<br/><span>Real Results.</span>',
+    subheading:'Students, housewives, and working professionals are earning online — from the comfort of their homes.',
+    ctaText:'See Real Proof'
+  },
+  marqueeItems:[
+    {name:'Priya S.',text:'earned ₹18,500 this month'},
+    {name:'Amit K.',text:'earned ₹7,300 last week'},
+    {name:'Sunita R.',text:'First ₹5,000 payment received'},
+    {name:'Ravi M.',text:'₹22,000 in 30 days'},
+    {name:'Kavita P.',text:'earning while at home'},
+    {name:'Deepak S.',text:'₹11,400 extra income'},
+    {name:'Meena T.',text:'First withdrawal done!'},
+    {name:'Vikas N.',text:'₹15,200 this month'}
+  ],
+  videos:[
+    {id:'dv1',name:'Priya Sharma',loc:'Jaipur, Rajasthan',earn:'₹18,500/mo',seed:'v1',duration:'2:34',src:''},
+    {id:'dv2',name:'Rahul Verma',loc:'Lucknow, UP',earn:'₹9,200/mo',seed:'v2',duration:'3:12',src:''},
+    {id:'dv3',name:'Anita Devi',loc:'Bhopal, MP',earn:'₹12,800/mo',seed:'v3',duration:'1:58',src:''},
+    {id:'dv4',name:'Suresh Kumar',loc:'Hyderabad, TS',earn:'₹21,000/mo',seed:'v4',duration:'4:05',src:''},
+    {id:'dv5',name:'Kavita Singh',loc:'Patna, Bihar',earn:'₹7,600/mo',seed:'v5',duration:'2:48',src:''}
+  ],
+  gallery:[
+    {id:'dg1',label:'₹12,500 earned',seed:'g1',src:''},
+    {id:'dg2',label:'₹8,200 received',seed:'g2',src:''},
+    {id:'dg3',label:'₹21,000/month',seed:'g3',src:''},
+    {id:'dg4',label:'₹5,500 first payout',seed:'g4',src:''},
+    {id:'dg5',label:'₹15,750 earned',seed:'g5',src:''},
+    {id:'dg6',label:'₹9,800 this week',seed:'g6',src:''},
+    {id:'dg7',label:'₹3,200 first payment',seed:'g7',src:''},
+    {id:'dg8',label:'₹18,000/month',seed:'g8',src:''},
+    {id:'dg9',label:'₹11,400 earned',seed:'g9',src:''},
+    {id:'dg10',label:'₹6,700 this month',seed:'g10',src:''},
+    {id:'dg11',label:'₹24,500/month',seed:'g11',src:''},
+    {id:'dg12',label:'₹4,100 first week',seed:'g12',src:''}
+  ],
+  testimonials:{
+    housewives:[
+      {id:'h1',name:'Priya S.',loc:'Jaipur',quote:'I never thought I could earn sitting at home. This changed everything for my family.',earn:'₹18,500/mo',seed:'hw1',src:''},
+      {id:'h2',name:'Sunita D.',loc:'Lucknow',quote:'My husband was skeptical but when I showed him the payment, he was shocked!',earn:'₹12,200/mo',seed:'hw2',src:''},
+      {id:'h3',name:'Anita R.',loc:'Bhopal',quote:'I do this between household work. 2-3 hours daily and I am earning more than expected.',earn:'₹9,400/mo',seed:'hw3',src:''},
+      {id:'h4',name:'Kavita M.',loc:'Indore',quote:'Finally financially independent. I pay for my children\'s school fees myself now.',earn:'₹14,800/mo',seed:'hw4',src:''}
+    ],
+    students:[
+      {id:'s1',name:'Rohit K.',loc:'Delhi',quote:'Paying my own college fees now. Parents are so proud. Best decision of my life.',earn:'₹7,300/mo',seed:'st1',src:''},
+      {id:'s2',name:'Sneha P.',loc:'Pune',quote:'I study in the morning and earn in the evening. This fits perfectly with college life.',earn:'₹5,900/mo',seed:'st2',src:''},
+      {id:'s3',name:'Arjun S.',loc:'Hyderabad',quote:'Started with zero knowledge. Now earning more than most of my seniors with jobs.',earn:'₹8,200/mo',seed:'st3',src:''},
+      {id:'s4',name:'Prachi G.',loc:'Mumbai',quote:'No experience needed. They teach everything step by step. Just follow and earn.',earn:'₹6,400/mo',seed:'st4',src:''}
+    ],
+    professionals:[
+      {id:'p1',name:'Deepak V.',loc:'Bangalore',quote:'My IT job pays well but this extra income has helped me invest for my future.',earn:'₹22,000/mo',seed:'pr1',src:''},
+      {id:'p2',name:'Meena T.',loc:'Chennai',quote:'I work this on weekends. ₹15k extra every month without affecting my job.',earn:'₹15,600/mo',seed:'pr2',src:''},
+      {id:'p3',name:'Vikas N.',loc:'Noida',quote:'My colleagues laughed at me initially. Now they are asking me how to join!',earn:'₹19,200/mo',seed:'pr3',src:''},
+      {id:'p4',name:'Sonia P.',loc:'Gurugram',quote:'This is completely different from my 9-to-5. More flexible, more rewarding.',earn:'₹11,800/mo',seed:'pr4',src:''}
+    ]
+  },
+  chatMessages:[
+    {id:'c1',dir:'incoming',sender:'Priya S.',text:'Bhai pehla payment aa gaya! 😭🙏',time:'9:14 AM',earn:''},
+    {id:'c2',dir:'outgoing',sender:'',text:'Congratulations! Kitna aaya?',time:'9:15 AM',earn:''},
+    {id:'c3',dir:'incoming',sender:'Priya S.',text:'₹5,200 first week mein! Believe nahi ho raha tha',time:'9:15 AM',earn:'₹5,200 First Payment'},
+    {id:'c4',dir:'incoming',sender:'Rahul K.',text:'Finally earning started. Thank you so much 🙏',time:'10:02 AM',earn:''},
+    {id:'c5',dir:'incoming',sender:'Sunita D.',text:'Aaj ₹1,800 ek din mein! Screenshot bhej rahi hoon',time:'11:30 AM',earn:''},
+    {id:'c6',dir:'outgoing',sender:'',text:'Awesome! Keep going 💪',time:'11:31 AM',earn:''},
+    {id:'c7',dir:'incoming',sender:'Arjun S.',text:'30 din mein ₹12,000+ ho gaya. Real hai yaar!',time:'2:15 PM',earn:'₹12,000 in 30 days'},
+    {id:'c8',dir:'incoming',sender:'Kavita M.',text:'Pichle mahine ₹18,500 kamaya. Life change ho gayi 🙌',time:'6:20 PM',earn:'₹18,500 Last Month'}
+  ],
+  carouselVideos:[
+    {id:'cr1',name:'Ravi Singh',loc:'Patna, Bihar',earn:'₹16,200/mo',seed:'cr1',duration:'3:20',src:''},
+    {id:'cr2',name:'Pooja Gupta',loc:'Kanpur, UP',earn:'₹8,900/mo',seed:'cr2',duration:'2:15',src:''},
+    {id:'cr3',name:'Sunil Yadav',loc:'Nagpur, MH',earn:'₹11,600/mo',seed:'cr3',duration:'4:10',src:''},
+    {id:'cr4',name:'Reena Patel',loc:'Surat, GJ',earn:'₹7,200/mo',seed:'cr4',duration:'1:45',src:''},
+    {id:'cr5',name:'Manoj Kumar',loc:'Ranchi, JH',earn:'₹9,800/mo',seed:'cr5',duration:'2:55',src:''},
+    {id:'cr6',name:'Divya Joshi',loc:'Dehradun, UK',earn:'₹13,400/mo',seed:'cr6',duration:'3:40',src:''}
+  ]
+};
+
+function getData(){
+  try {
+    const raw = localStorage.getItem(DATA_KEY);
+    if(!raw) return DEFAULTS;
+    const stored = JSON.parse(raw);
+    // Deep merge with defaults for safety
+    return {
+      settings:{...DEFAULTS.settings,...(stored.settings||{})},
+      hero:{...DEFAULTS.hero,...(stored.hero||{})},
+      marqueeItems:stored.marqueeItems||DEFAULTS.marqueeItems,
+      videos:stored.videos||DEFAULTS.videos,
+      gallery:stored.gallery||DEFAULTS.gallery,
+      testimonials:{
+        housewives:stored.testimonials?.housewives||DEFAULTS.testimonials.housewives,
+        students:stored.testimonials?.students||DEFAULTS.testimonials.students,
+        professionals:stored.testimonials?.professionals||DEFAULTS.testimonials.professionals
+      },
+      chatMessages:stored.chatMessages||DEFAULTS.chatMessages,
+      carouselVideos:stored.carouselVideos||DEFAULTS.carouselVideos
+    };
+  } catch(e){ return DEFAULTS; }
+}
+
+/* ─── WHATSAPP ───────────────────────────────────────────── */
+function applyWaLinks(data){
+  const url = `https://wa.me/${data.settings.waPhone}?text=${encodeURIComponent(data.settings.waMessage)}`;
+  document.querySelectorAll('.wa-cta').forEach(el=>{
+    el.addEventListener('click',e=>{e.preventDefault();window.open(url,'_blank')});
+  });
+}
+
+/* ─── REVEAL OBSERVER ────────────────────────────────────── */
+const ro = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('vis')});
+},{threshold:.1});
+function observeReveal(){
+  document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+}
+
+/* ─── NAVBAR ─────────────────────────────────────────────── */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>20));
+
+/* ─── RENDER FUNCTIONS ───────────────────────────────────── */
+function renderHero(d){
+  document.getElementById('heroHeadline').innerHTML = d.hero.headline;
+  document.getElementById('heroSub').textContent = d.hero.subheading;
+  document.getElementById('heroCtaText').textContent = d.hero.ctaText;
+  const nm = d.settings.siteName;
+  const parts = nm.split('.');
+  document.getElementById('siteLogoEl').innerHTML = parts[0]+'<span>'+(parts.length>1?'.'+parts.slice(1).join('.'):'')+'</span>';
+  document.getElementById('footerSiteName').textContent = `© ${new Date().getFullYear()} ${nm}`;
+  document.title = `${d.hero.ctaText} – ${nm}`;
+}
+
+function renderMarquee(d){
+  const el = document.getElementById('marqueeEl');
+  const items = [...d.marqueeItems,...d.marqueeItems]; // double for seamless
+  el.innerHTML = items.map(i=>`
+    <span class="mitem"><span class="mdot"></span><strong>${i.name}</strong> ${i.text}</span>
+  `).join('');
+}
+
+function renderVideos(d){
+  const g = document.getElementById('videoGrid');
+  if(!d.videos.length){g.innerHTML='<div class="empty-state">No videos added yet.</div>';return}
+  g.innerHTML = d.videos.map((v,i)=>{
+    const src = v.src || `https://picsum.photos/seed/${v.seed||v.id}/400/225`;
+    return `<div class="vcard reveal" style="transition-delay:${i*.07}s">
+      <div class="vthumb">
+        <img src="${src}" alt="${v.name}" loading="lazy"/>
+        <div class="play-btn"><svg width="19" height="19" viewBox="0 0 24 24" fill="#fff"><path d="M5 3l14 9-14 9V3z"/></svg></div>
+        <div class="vdur">${v.duration||'2:30'}</div>
+      </div>
+      <div class="vinfo">
+        <div class="vinfo-name">${v.name}</div>
+        <div class="vinfo-loc">📍 ${v.loc}</div>
+        <div class="vinfo-earn">${v.earn}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+let galPage=1, galData=[], galPer=12;
+function renderGallery(d,reset=false){
+  const g = document.getElementById('galGrid');
+  if(reset){g.innerHTML='';galPage=1}
+  galData = d.gallery;
+  const slice = galData.slice((galPage-1)*galPer, galPage*galPer);
+  if(!slice.length && galPage===1){
+    g.innerHTML='<div style="color:var(--brown-l);font-size:.88rem;grid-column:1/-1;text-align:center;padding:40px">No gallery images yet.</div>';
+    document.getElementById('loadMoreBtn').style.display='none';return;
+  }
+  slice.forEach((item,i)=>{
+    const src = item.src || `https://picsum.photos/seed/${item.seed||item.id}/300/400`;
+    const div = document.createElement('div');
+    div.className = 'gal-item reveal';
+    div.style.transitionDelay = i*.04+'s';
+    div.innerHTML = `<img src="${src}" alt="${item.label||''}" loading="lazy"/><div class="gal-ov"><span class="gal-lbl">${item.label||'Proof'}</span></div>`;
+    div.addEventListener('click',()=>openModal(src,item.label||'Proof'));
+    g.appendChild(div);
+    ro.observe(div);
+  });
+  document.getElementById('loadMoreBtn').style.display = (galPage*galPer>=galData.length)?'none':'inline-flex';
+}
+
+document.getElementById('loadMoreBtn').addEventListener('click',()=>{
+  const d = getData(); galPage++; renderGallery(d);
+});
+
+function openModal(src,cap){
+  document.getElementById('modalImg').src=src;
+  document.getElementById('modalCap').textContent=cap;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+document.getElementById('modalX').addEventListener('click',()=>{document.getElementById('modal').classList.remove('open');document.body.style.overflow=''});
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===document.getElementById('modal')){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}});
+
+function renderTestimonials(d){
+  ['housewives','students','professionals'].forEach(cat=>{
+    const p = document.getElementById(`tab-${cat}`);
+    const arr = d.testimonials[cat];
+    if(!arr||!arr.length){p.innerHTML='<div class="empty-state">No testimonials yet.</div>';return}
+    p.innerHTML = arr.map((t,i)=>{
+      const src = t.src||`https://picsum.photos/seed/${t.seed||t.id}/80/80`;
+      return `<div class="tcard reveal" style="transition-delay:${i*.08}s">
+        <div class="tcard-top">
+          <img src="${src}" alt="${t.name}" class="tcard-av" loading="lazy"/>
+          <div><div class="tcard-name">${t.name}</div><span class="tcard-tag">📍 ${t.loc}</span></div>
+        </div>
+        <div class="stars">★★★★★</div>
+        <div class="tcard-quote">"${t.quote}"</div>
+        <div class="tcard-earn">💰 ${t.earn}</div>
+      </div>`;
+    }).join('');
+  });
+}
+
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('act'));
+    document.querySelectorAll('.tpanel').forEach(p=>p.classList.remove('act'));
+    btn.classList.add('act');
+    const p = document.getElementById(`tab-${btn.dataset.tab}`);
+    p.classList.add('act');
+    observeReveal();
+  });
+});
+
+function renderChat(d){
+  const body = document.getElementById('chatBody');
+  body.innerHTML = d.chatMessages.map(m=>`
+    <div class="cmsg ${m.dir}">
+      ${m.dir==='incoming'&&m.sender?`<div class="csender">${m.sender}</div>`:''}
+      <div class="cbubble">${m.text}</div>
+      ${m.earn?`<div class="cearn">💸 ${m.earn}</div>`:''}
+      <div class="cmeta">${m.time}</div>
+    </div>`).join('');
+  setTimeout(()=>body.scrollTop=body.scrollHeight,120);
+}
+
+function renderCarousel(d){
+  const t = document.getElementById('carouselTrack');
+  t.innerHTML = d.carouselVideos.map(v=>{
+    const src = v.src||`https://picsum.photos/seed/${v.seed||v.id}/400/225`;
+    return `<div class="citem">
+      <div class="cthumb">
+        <img src="${src}" alt="${v.name}" loading="lazy"/>
+        <div class="cplay"><svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M5 3l14 9-14 9V3z"/></svg></div>
+      </div>
+      <div class="cinfo"><div class="cn">${v.name}</div><div class="ce">${v.earn}</div></div>
+    </div>`;
+  }).join('');
+}
+
+/* ─── INIT ───────────────────────────────────────────────── */
+function init(){
+  const d = getData();
+  renderHero(d);
+  renderMarquee(d);
+  renderVideos(d);
+  renderGallery(d, true);
+  renderTestimonials(d);
+  renderChat(d);
+  renderCarousel(d);
+  applyWaLinks(d);
+  observeReveal();
+}
+
+// Listen for admin updates (same tab storage events)
+window.addEventListener('storage', e=>{
+  if(e.key===DATA_KEY) { galPage=1; init(); }
+});
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
